@@ -10,6 +10,7 @@ interface Api {
     @GET("discover/movie")
     fun discoverMovies(
         @Query("api_key") apiKey: String = "cacdde94532520523cedc277d0579223",
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("sort_by") sort_by: String = "popularity.desc"
     ): Call<GetMoviesResponse>
 }
