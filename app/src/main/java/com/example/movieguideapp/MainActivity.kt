@@ -1,5 +1,6 @@
 package com.example.movieguideapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             false
         )
         movies.layoutManager = moviesLayoutManager
-        moviesAdapter = MoviesAdapter(mutableListOf())
+        moviesAdapter =  MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         movies.adapter = moviesAdapter
 
         discoverMovies()
@@ -56,6 +57,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun showMovieDetails(movie: Movie) {
+        val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra(MOVIE_BACKDROP, movie.backdropPath)
+        intent.putExtra(MOVIE_POSTER, movie.posterPath)
+        intent.putExtra(MOVIE_TITLE, movie.title)
+        intent.putExtra(MOVIE_RATING, movie.rating)
+        intent.putExtra(MOVIE_RELEASE_DATE, movie.releaseDate)
+        intent.putExtra(MOVIE_OVERVIEW, movie.overview)
+        startActivity(intent)
     }
 
 }

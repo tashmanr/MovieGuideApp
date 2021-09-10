@@ -3,15 +3,16 @@ package com.example.movieguideapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 class MoviesAdapter(
-    private var movies: MutableList<Movie>
+    private var movies: MutableList<Movie>,
+    private val onMovieClick: (movie: Movie) -> Unit
 ) : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -35,15 +36,18 @@ class MoviesAdapter(
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val poster: ImageView = itemView.findViewById(R.id.movie_poster)
-        private val title: TextView = itemView.findViewById(R.id.movie_title)
-
-
+        private var title: TextView = itemView.findViewById(R.id.movie_title)
+        //private var rating: TextView = itemView.findViewById(R.id.movie_rating)
+        private var rating: RatingBar = itemView.findViewById(R.id.movie_rating)
         fun bind(movie: Movie) {
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
                 .transform(CenterCrop())
                 .into(poster)
-            //title.text = movie.title
+            title.text = movie.title
+            //rating.text = movie.rating.toString()
+            rating.rating = movie.rating / 2
+            itemView.setOnClickListener { onMovieClick.invoke(movie) }
         }
     }
 }
