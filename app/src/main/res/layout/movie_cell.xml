@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="210dp"
         android:progressTint="#DDCA1E"
         app:layout_constraintEnd_toEndOf="@+id/movie_title"
         app:layout_constraintStart_toStartOf="@+id/movie_title"
