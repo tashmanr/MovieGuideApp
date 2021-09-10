@@ -37,7 +37,6 @@ class MoviesAdapter(
 
         private val poster: ImageView = itemView.findViewById(R.id.movie_poster)
         private var title: TextView = itemView.findViewById(R.id.movie_title)
-        //private var rating: TextView = itemView.findViewById(R.id.movie_rating)
         private var rating: RatingBar = itemView.findViewById(R.id.movie_rating)
         fun bind(movie: Movie) {
             Glide.with(itemView)
@@ -45,7 +44,6 @@ class MoviesAdapter(
                 .transform(CenterCrop())
                 .into(poster)
             title.text = movie.title
-            //rating.text = movie.rating.toString()
             rating.rating = movie.rating / 2
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
         }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -19,13 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         movies = findViewById(R.id.movies)
-        moviesLayoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
+        moviesLayoutManager = GridLayoutManager(
+            this, 2, LinearLayoutManager.VERTICAL, false
         )
         movies.layoutManager = moviesLayoutManager
-        moviesAdapter =  MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
+        moviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         movies.adapter = moviesAdapter
 
         discoverMovies()

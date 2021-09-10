@@ -1,8 +1,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="200dp"
+    android:layout_width="170dp"
     android:layout_height="250dp"
-    android:layout_marginStart="100dp"
+    android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     app:cardCornerRadius="4dp">
 
@@ -10,7 +10,7 @@
         android:id="@+id/movie_poster"
         android:layout_width="128dp"
         android:layout_height="172dp"
-        android:layout_marginStart="37dp" />
+        android:layout_marginStart="21dp" />
 
     <TextView
         android:id="@+id/movie_title"
@@ -31,7 +31,7 @@
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="200dp"
         android:progressTint="#DDCA1E"
         app:layout_constraintEnd_toEndOf="@+id/movie_title"
