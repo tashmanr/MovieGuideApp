@@ -16,9 +16,7 @@ const val MOVIE_OVERVIEW = "extra_movie_overview"
 
 class MovieDetailsActivity : AppCompatActivity() {
 
-    private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
-    private lateinit var title: TextView
     private lateinit var rating: RatingBar
     private lateinit var releaseDate: TextView
     private lateinit var overview: TextView
@@ -41,13 +39,14 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun populateDetails(extras: Bundle) {
-        setTitle(extras.getString(MOVIE_TITLE))
+        title = extras.getString(MOVIE_TITLE)
         extras.getString(MOVIE_POSTER)?.let { posterPath ->
             Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w342$posterPath")
                 .transform(CenterCrop())
                 .into(poster)
         }
+
 
         rating.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
         releaseDate.text = "Release date: ${extras.getString(MOVIE_RELEASE_DATE, "")}"
